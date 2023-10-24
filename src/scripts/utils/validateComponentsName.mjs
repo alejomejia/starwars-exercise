@@ -6,7 +6,7 @@ import { existsSync } from 'fs'
  * @param {string[]} components - Array of components names
  */
 
-export function validateComponentsName(components) {
+export default function validateComponentsName(components) {
   if (!Boolean(components.length)) {
     console.log('🚫 You must give at least one component name...')
     process.exit(0)

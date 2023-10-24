@@ -8,7 +8,7 @@ import { mkdirSync, writeFileSync } from 'fs'
 
 const DEFAULT_COMPONENT_PATH = 'src/components/'
 
-export function createComponentFile(componentName) {
+export default function createComponentFile(componentName) {
   const componentPath = `${DEFAULT_COMPONENT_PATH}${componentName}`
 
   mkdirSync(componentPath)

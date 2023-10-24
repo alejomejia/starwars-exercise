@@ -8,7 +8,7 @@
  * @returns {string}
  */
 
-export function pluralize({ count, singular, plural }) {
+export default function pluralize({ count, singular, plural }) {
   if (count === 1) {
     return singular
   }

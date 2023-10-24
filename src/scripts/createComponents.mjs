@@ -1,7 +1,7 @@
-import { validateComponentsName } from './utils/validateComponentsName.js'
-import { transformComponentName } from './utils/transformComponentName.js'
-import { pluralize } from './utils/pluralize.js'
-import { createComponentFile } from './utils/createComponentFile.js'
+import validateComponentsName from './utils/validateComponentsName.mjs'
+import transformComponentName from './utils/transformComponentName.mjs'
+import pluralize from './utils/pluralize.mjs'
+import createComponentFile from './utils/createComponentFile.mjs'
 
 const [_a, _b, ...components] = process.argv
 

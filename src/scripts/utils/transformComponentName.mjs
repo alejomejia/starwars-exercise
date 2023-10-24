@@ -4,7 +4,7 @@
  * @param {string} componentName - Component name given by the user
  */
 
-export function transformComponentName(componentName) {
+export default function transformComponentName(componentName) {
   const firstChar = componentName.charAt(0).toUpperCase()
   const remainingChars = componentName.slice(1)
 

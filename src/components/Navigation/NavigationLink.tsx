@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import cx from 'classnames'
 
@@ -15,18 +16,18 @@ export function NavigationLink({ label, path }: Props) {
     'uppercase py-4 flex justify-center items-center text-sm font-semibold transform hover:text-yellow-300 hover:-translate-y-0.5 transition-all duration-200'
 
   const activeLinkClassnames =
-    'text-yellow-300 after:block after:w-6 after:h-6 after:bg-yellow-100 after:absolute after:-z-10 after:rounded-full after:blur-xl after:opacity-50'
+    'text-yellow-300 after:block after:w-6 after:h-6 after:bg-yellow-100 after:absolute after:-z-10 after:rounded-full after:blur-xl after:opacity-30'
 
   return (
     <li>
-      <a
+      <Link
         className={cx(linkClassnames, {
           [activeLinkClassnames]: path === pathname
         })}
         href={path}
       >
         {label}
-      </a>
+      </Link>
     </li>
   )
 }

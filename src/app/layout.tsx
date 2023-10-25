@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 
 import { Header } from '@/components/Header/Header'
+import { AppContextProvider } from '@/context/provider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,9 +21,11 @@ export default function RootLayout({ children }: Props) {
     <html lang="en">
       <body className={inter.className}>
         <div className="relative min-h-screen bg-slate-950">
-          <Header />
-          <div className="relative z-10">{children}</div>
-          <div className="w-96 h-96 bg-slate-500 absolute top-0 left-1/2 transform -translate-x-72 translate-y-6 blur-2xl rounded-full opacity-20"></div>
+          <AppContextProvider>
+            <Header />
+            <div className="relative z-10">{children}</div>
+            <div className="w-96 h-96 bg-slate-500 absolute top-0 left-1/2 transform -translate-x-72 translate-y-6 blur-2xl rounded-full opacity-20"></div>
+          </AppContextProvider>
         </div>
       </body>
     </html>

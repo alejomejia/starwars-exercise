@@ -2,7 +2,9 @@ interface Props {
   color?: string
 }
 
-export function Logo({ color = '#ffe81f' }: Props) {
+const STARWARS_LOGO_COLOR = '#ffe81f'
+
+export function Logo({ color = STARWARS_LOGO_COLOR }: Props) {
   return (
     <svg viewBox="0 0 200 120" color={color}>
       <path

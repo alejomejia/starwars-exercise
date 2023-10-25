@@ -1,4 +1,4 @@
-export type Metadata = {
+export type ApiMetadata = {
   count: number
   next: string | null
   previous: string | null

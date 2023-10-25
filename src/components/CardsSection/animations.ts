@@ -1,12 +1,12 @@
 export const initial = {
-  opacity: 0,
-  y: 20
+  y: 20,
+  opacity: 0
 }
 
 export const animate = (index: number) => ({
-  opacity: 1,
   y: 0,
+  opacity: 1,
   transition: {
-    delay: index * 0.2
+    delay: index * 0.1
   }
 })

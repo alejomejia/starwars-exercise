@@ -15,7 +15,7 @@ export function NavigationLink({ label, path }: Props) {
   const isActive = pathname === path
 
   const linkClassnames =
-    'uppercase py-4 flex justify-center items-center text-sm font-semibold transform hover:text-yellow-300'
+    'uppercase py-4 flex justify-center items-center text-sm font-semibold transform transition-color duration-200 hover:text-yellow-300'
 
   const activeLinkClassnames =
     'text-yellow-300 after:block after:w-6 after:h-6 after:bg-yellow-100 after:absolute after:-z-10 after:rounded-full after:blur-xl after:opacity-30'

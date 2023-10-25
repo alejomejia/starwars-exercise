@@ -1,7 +1,7 @@
-import { Metadata, Person } from '@/types/api'
+import { ApiMetadata, Person } from '@/types/api'
 import { ENDPOINTS } from './consts'
 
-interface People extends Metadata {
+interface People extends ApiMetadata {
   results: Person[]
 }
 

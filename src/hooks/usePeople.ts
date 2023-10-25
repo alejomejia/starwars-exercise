@@ -1,15 +1,11 @@
 import { getPeople } from '@/services/getPeople'
+import { getEntityId } from './utils/getEntityId'
 
 export async function usePeople(count?: number) {
   const { results } = await getPeople()
 
   return (count ? results.slice(0, count) : results).map((character) => ({
-    id: getPersonId(character.url),
+    id: getEntityId(character.url),
     ...character
   }))
-}
-
-function getPersonId(url: string): number {
-  const parts = url.split('/')
-  return Number(parts[parts.length - 2])
 }

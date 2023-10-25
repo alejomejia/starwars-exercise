@@ -6,10 +6,11 @@ interface Props {
   }
 }
 
-export default function Person({ params: { id } }: Props) {
+export default function Film({ params: { id } }: Props) {
   return (
     <PageWrapper>
-      <h1 className="text-9xl">Person {id}</h1>
+      {' '}
+      <h1 className="text-9xl">Film {id}</h1>
     </PageWrapper>
   )
 }

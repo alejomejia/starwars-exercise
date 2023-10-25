@@ -1,3 +1,7 @@
+export type Entity = Person | Film | Starship | Vehicle | Specie | Planet
+
+export type Entities = 'people' | 'films' | 'starships' | 'vehicles' | 'species' | 'planets'
+
 export type ApiMetadata = {
   count: number
   next: string | null

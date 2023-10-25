@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { animate, initial, exit } from './animations'
+import { animate, initial } from './animations'
 
 interface Props {
   children: React.ReactNode
@@ -9,7 +9,7 @@ interface Props {
 
 export function PageWrapper({ children }: Props) {
   return (
-    <motion.div initial={initial} animate={animate} exit={exit}>
+    <motion.div initial={initial} animate={animate}>
       {children}
     </motion.div>
   )

@@ -12,9 +12,9 @@ interface Props {
 export function CardsGrid({ cards }: Props) {
   return (
     <div className="grid grid-cols-4 gap-4">
-      {cards.map(({ id, title, imageUrl, context }, index) => (
+      {cards.map(({ id, title, imageUrl, entity }, index) => (
         <motion.div key={id} initial={initial} animate={animate(index)}>
-          <Card id={id} title={title} imageUrl={imageUrl} context={context} />
+          <Card id={id} title={title} imageUrl={imageUrl} entity={entity} />
         </motion.div>
       ))}
     </div>

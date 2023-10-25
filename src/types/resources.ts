@@ -1,8 +1,9 @@
-import { ApiMetadata, Person, Film, Starship, Vehicle, Specie, Planet, Entity } from './api'
+import { ApiMetadata, Person, Film, Starship, Vehicle, Specie, Planet, Entity, Entities } from './api'
 
 interface SharedCustomAttributes {
   id: number
   imageUrl: string | null
+  entity: Entities
 }
 
 type CustomPerson = Person & SharedCustomAttributes

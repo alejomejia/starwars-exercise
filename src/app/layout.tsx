@@ -21,8 +21,8 @@ export default function RootLayout({ children }: Props) {
       <body className={inter.className}>
         <div className="relative min-h-screen bg-slate-950">
           <Header />
-          <main className="relative z-10">{children}</main>
-          <div className="w-96 h-96 bg-slate-500 fixed top-0 left-1/2 transform -translate-x-72 translate-y-6 blur-2xl rounded-full opacity-20"></div>
+          <div className="relative z-10">{children}</div>
+          <div className="w-96 h-96 bg-slate-500 absolute top-0 left-1/2 transform -translate-x-72 translate-y-6 blur-2xl rounded-full opacity-20"></div>
         </div>
       </body>
     </html>

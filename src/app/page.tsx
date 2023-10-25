@@ -2,47 +2,64 @@ import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { CardsSection } from '@/components/CardsSection/CardsSection'
 import { ROUTES } from '@/components/Navigation/consts'
 
-import { usePeople } from '@/hooks/usePeople'
-import { useFilms } from '@/hooks/useFilms'
-import { useStarships } from '@/hooks/useStarships'
-import { useVehicles } from '@/hooks/useVehicles'
-import { useSpecies } from '@/hooks/useSpecies'
-import { usePlanets } from '@/hooks/usePlanets'
+import { getResource } from '@/services/getResource'
 
 const MAX_CARDS_PER_SECTION = 4
 
 export default async function Home() {
-  const people = (await usePeople(MAX_CARDS_PER_SECTION)).map(({ id, name }) => ({
-    id,
-    title: name,
-    context: 'people'
-  }))
+  const people = (await getResource({ entity: 'people', count: MAX_CARDS_PER_SECTION })).results.map(
+    ({ id, name, imageUrl, entity }) => ({
+      id,
+      title: name,
+      imageUrl,
+      entity
+    })
+  )
 
-  const films = (await useFilms(MAX_CARDS_PER_SECTION)).map(({ id, title }) => ({ id, title, context: 'films' }))
+  const films = (await getResource({ entity: 'films', count: MAX_CARDS_PER_SECTION })).results.map(
+    ({ id, name, imageUrl, entity }) => ({
+      id,
+      title: name,
+      imageUrl,
+      entity
+    })
+  )
 
-  const starships = (await useStarships(MAX_CARDS_PER_SECTION)).map(({ id, name }) => ({
-    id,
-    title: name,
-    context: 'starships'
-  }))
+  const starships = (await getResource({ entity: 'starships', count: MAX_CARDS_PER_SECTION })).results.map(
+    ({ id, name, imageUrl, entity }) => ({
+      id,
+      title: name,
+      imageUrl,
+      entity
+    })
+  )
 
-  const vehicles = (await useVehicles(MAX_CARDS_PER_SECTION)).map(({ id, name }) => ({
-    id,
-    title: name,
-    context: 'vehicles'
-  }))
+  const vehicles = (await getResource({ entity: 'vehicles', count: MAX_CARDS_PER_SECTION })).results.map(
+    ({ id, name, imageUrl, entity }) => ({
+      id,
+      title: name,
+      imageUrl,
+      entity
+    })
+  )
 
-  const species = (await useSpecies(MAX_CARDS_PER_SECTION)).map(({ id, name }) => ({
-    id,
-    title: name,
-    context: 'species'
-  }))
+  const species = (await getResource({ entity: 'species', count: MAX_CARDS_PER_SECTION })).results.map(
+    ({ id, name, imageUrl, entity }) => ({
+      id,
+      title: name,
+      imageUrl,
+      entity
+    })
+  )
 
-  const planets = (await usePlanets(MAX_CARDS_PER_SECTION)).map(({ id, name }) => ({
-    id,
-    title: name,
-    context: 'planets'
-  }))
+  const planets = (await getResource({ entity: 'planets', count: MAX_CARDS_PER_SECTION })).results.map(
+    ({ id, name, imageUrl, entity }) => ({
+      id,
+      title: name,
+      imageUrl,
+      entity
+    })
+  )
 
   return (
     <PageWrapper>

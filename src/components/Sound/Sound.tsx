@@ -26,7 +26,7 @@ export function Sound() {
       className="w-12 h-12 flex items-center justify-center text-slate-50 bg-slate-900 rounded-full p-3 transition duration-200 hover:bg-slate-800"
       onClick={toggleSound}
     >
-      {isSoundEnabled ? <IconVolumeOff /> : <IconVolumeOn />}
+      {isSoundEnabled ? <IconVolumeOn /> : <IconVolumeOff />}
     </button>
   )
 }

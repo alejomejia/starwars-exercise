@@ -14,7 +14,7 @@ export function Card({ id, title, imageUrl, entity }: CardProps) {
       <article className="flex flex-col justify-center h-full transform transition duration-200 hover:-translate-y-1">
         <picture>
           <img
-            src={imageUrl ?? 'images/fallback.jpg'}
+            src={imageUrl ?? 'images/resource-fallback.jpg'}
             alt={title}
             className="object-cover object-top w-full h-72 rounded-t-lg"
           />

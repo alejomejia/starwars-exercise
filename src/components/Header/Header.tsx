@@ -7,9 +7,9 @@ export function Header() {
   return (
     <header className="sticky z-50 bg-slate-800 mb-16 bg-opacity-5 backdrop-blur-3xl top-0 border-b-2 border-b-yellow-300">
       <div className="px-6 py-4 flex justify-between items-center">
-        <a className="w-32" href={ROUTES.home}>
+        <div className="w-32">
           <Logo />
-        </a>
+        </div>
         <Navigation />
         <Sound />
       </div>

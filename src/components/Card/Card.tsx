@@ -1,11 +1,13 @@
 import Link from 'next/link'
-import { IconEye } from '../Icons/IconEye'
+import { Entities } from '@/types/api'
+
+import { CardViews } from './CardViews'
 
 export interface CardProps {
   id: number
   title: string
   imageUrl: string | null
-  entity: string
+  entity: Entities
 }
 
 export function Card({ id, title, imageUrl, entity }: CardProps) {
@@ -21,12 +23,7 @@ export function Card({ id, title, imageUrl, entity }: CardProps) {
         </picture>
         <div className="bg-slate-900 p-4 rounded-b-lg transition duration-200 group-hover:bg-slate-800">
           <h3 className="text-slate-300 font-medium mb-2">{title}</h3>
-          <div className="flex gap-2 items-center">
-            <div className="w-5 h-5 text-slate-600">
-              <IconEye />
-            </div>
-            <span className="text-slate-500">0 views</span>
-          </div>
+          <CardViews id={id} entity={entity} />
         </div>
       </article>
     </Link>

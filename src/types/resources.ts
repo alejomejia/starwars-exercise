@@ -6,12 +6,12 @@ interface SharedCustomAttributes {
   entity: Entities
 }
 
-type CustomPerson = Person & SharedCustomAttributes
-type CustomFilm = Film & SharedCustomAttributes
-type CustomStarship = Starship & SharedCustomAttributes
-type CustomVehicle = Vehicle & SharedCustomAttributes
-type CustomSpecie = Specie & SharedCustomAttributes
-type CustomPlanet = Planet & SharedCustomAttributes
+export type CustomPerson = Person & SharedCustomAttributes
+export type CustomFilm = Film & SharedCustomAttributes
+export type CustomStarship = Starship & SharedCustomAttributes
+export type CustomVehicle = Vehicle & SharedCustomAttributes
+export type CustomSpecie = Specie & SharedCustomAttributes
+export type CustomPlanet = Planet & SharedCustomAttributes
 
 export interface People extends ApiMetadata {
   results: CustomPerson[]
@@ -36,6 +36,8 @@ interface Species extends ApiMetadata {
 interface Planets extends ApiMetadata {
   results: CustomPlanet[]
 }
+
+export type ResourceById = Person | Film | Starship | Vehicle | Specie | Planet
 
 export type Resources = People | Films | Starships | Vehicles | Species | Planets
 

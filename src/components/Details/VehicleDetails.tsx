@@ -1,10 +1,10 @@
-import { CustomStarship } from '@/types/resources'
+import { CustomVehicle } from '@/types/resources'
 
 interface Props {
-  starship: CustomStarship
+  vehicle: CustomVehicle
 }
 
-export async function StarshipDetails({ starship }: Props) {
+export async function VehicleDetails({ vehicle }: Props) {
   const {
     imageUrl,
     name,
@@ -17,12 +17,12 @@ export async function StarshipDetails({ starship }: Props) {
     passengers,
     cargo_capacity: cargoCapacity,
     consumables,
-    hyperdrive_rating: hyperdriveRating
-  } = starship
+    vehicle_class: vehicleClass
+  } = vehicle
 
   const hasSameModelAsName = model === name
 
-  const starshipInfoMap = {
+  const vehicleInfoMap = {
     ['Manufacturers']: manufacturer,
     ['Const In Credits']: `${costInCredits} imperial credits`,
     ['Length']: `${length}m`,
@@ -31,10 +31,10 @@ export async function StarshipDetails({ starship }: Props) {
     ['Passengers']: passengers,
     ['Cargo Capacity']: `${cargoCapacity}kg`,
     ['Consumables']: consumables,
-    ['Hyperdrive Rating']: hyperdriveRating
+    ['Vehicle Class']: vehicleClass
   }
 
-  const starshipInfo = Object.entries(starshipInfoMap).map(([key, value], index) => (
+  const vehicleInfo = Object.entries(vehicleInfoMap).map(([key, value], index) => (
     <li key={index} className="mb-2">
       <strong className="font-medium text-yellow-300">{key}:</strong> <span className="capitalize">{value}</span>
     </li>
@@ -52,7 +52,7 @@ export async function StarshipDetails({ starship }: Props) {
       <div className="flex-1">
         {!hasSameModelAsName && <h1 className="capitalize mb-2 text-xl font-medium text-slate-300">{model}</h1>}
         <h2 className="inline-block text-4xl font-bold mb-8 border-b-4 border-b-yellow-300">{name}</h2>
-        <ul>{starshipInfo}</ul>
+        <ul>{vehicleInfo}</ul>
       </div>
     </div>
   )

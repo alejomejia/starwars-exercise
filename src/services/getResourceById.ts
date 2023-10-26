@@ -13,7 +13,7 @@ import {
 import { ENDPOINTS } from './consts'
 import { getImageUrl } from './utils/getImageUrl'
 
-type EntityResponseMap = {
+export type EntityResponseMap = {
   people: CustomPerson
   films: CustomFilm
   starships: CustomStarship

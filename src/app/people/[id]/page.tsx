@@ -1,10 +1,8 @@
-'use client'
-
-import { useEffect } from 'react'
-
-import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { LS_INITIAL_VIEWS, LocalStorageViews } from '@/storage/views'
+import { PersonDetail } from '@/components/PersonDetail/PersonDetail'
+import { CountView } from '@/components/CountView/CountView'
+import { LinkButton } from '@/components/LinkButton/LinkButton'
+import { getResourceById } from '@/services/getResourceById'
 
 interface Props {
   params: {
@@ -12,27 +10,19 @@ interface Props {
   }
 }
 
-export default function Person({ params: { id } }: Props) {
-  const [views, setViews] = useLocalStorage<LocalStorageViews>('views', LS_INITIAL_VIEWS)
-
-  useEffect(() => {
-    setViews((prev) => ({
-      ...prev,
-      people: {
-        ...prev.people,
-        [id]: (prev.people?.[id] ?? 0) + 1
-      }
-    }))
-  }, [id, setViews])
+export default async function Person({ params: { id } }: Props) {
+  const person = await getResourceById('people', id)
 
   return (
     <PageWrapper>
-      <main className="min-h-screen">
+      <CountView id={id} entity="people" />
+      <main>
         <section className="w-full max-w-7xl mx-auto">
           <div className="px-12">
-            <h1 className="text-9xl">
-              Person {id} - Views {views['people']?.[id] ?? 0}
-            </h1>
+            <div className="mb-8">
+              <LinkButton href="/people">Back</LinkButton>
+            </div>
+            <PersonDetail person={person} />
           </div>
         </section>
       </main>

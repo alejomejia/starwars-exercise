@@ -1,8 +1,9 @@
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { PersonDetail } from '@/components/PersonDetail/PersonDetail'
+import { PersonDetails } from '@/components/Details/PersonDetails'
 import { CountView } from '@/components/CountView/CountView'
 import { LinkButton } from '@/components/LinkButton/LinkButton'
 import { getResourceById } from '@/services/getResourceById'
+import { ROUTES } from '@/components/Navigation/consts'
 
 interface Props {
   params: {
@@ -20,9 +21,9 @@ export default async function Person({ params: { id } }: Props) {
         <section className="w-full max-w-7xl mx-auto">
           <div className="px-12">
             <div className="mb-8">
-              <LinkButton href="/people">Back</LinkButton>
+              <LinkButton href={ROUTES.people}>Back</LinkButton>
             </div>
-            <PersonDetail person={person} />
+            <PersonDetails person={person} />
           </div>
         </section>
       </main>

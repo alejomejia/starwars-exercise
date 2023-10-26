@@ -4,7 +4,7 @@ interface Props {
   person: CustomPerson
 }
 
-export async function PersonDetail({ person }: Props) {
+export async function PersonDetails({ person }: Props) {
   const {
     imageUrl,
     name,
@@ -44,7 +44,7 @@ export async function PersonDetail({ person }: Props) {
       </picture>
       <div className="flex-1">
         <h1 className="inline-block text-4xl font-bold mb-8 border-b-4 border-b-yellow-300">{name}</h1>
-        <ul className="">{personalInfo}</ul>
+        <ul>{personalInfo}</ul>
       </div>
     </div>
   )

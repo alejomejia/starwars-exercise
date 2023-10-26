@@ -21,7 +21,7 @@ export default async function Person({ params: { id } }: Props) {
         <section className="w-full max-w-7xl mx-auto">
           <div className="px-12">
             <div className="mb-8">
-              <LinkButton href={ROUTES.people}>Back</LinkButton>
+              <LinkButton href={ROUTES.people}>Back to people</LinkButton>
             </div>
             <PersonDetails person={person} />
           </div>

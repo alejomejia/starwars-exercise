@@ -21,7 +21,7 @@ export default async function Planet({ params: { id } }: Props) {
         <section className="w-full max-w-7xl mx-auto">
           <div className="px-12 pb-24">
             <div className="mb-8">
-              <LinkButton href={ROUTES.planets}>Back</LinkButton>
+              <LinkButton href={ROUTES.planets}>Back to planets</LinkButton>
             </div>
             <PlanetDetails planet={planet} />
           </div>

@@ -21,7 +21,7 @@ export default async function Film({ params: { id } }: Props) {
         <section className="w-full max-w-7xl mx-auto">
           <div className="px-12 pb-24">
             <div className="mb-8">
-              <LinkButton href={ROUTES.films}>Back</LinkButton>
+              <LinkButton href={ROUTES.films}>Back to films</LinkButton>
             </div>
             <FilmDetails film={film} />
           </div>

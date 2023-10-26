@@ -1,17 +1,10 @@
 import { CardsSection } from '@/components/CardsSection/CardsSection'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 
-import { getResource } from '@/services/getResource'
+import { getParsedResource } from '@/utils/getParsedResource'
 
 export default async function Films() {
-  const { results } = await getResource({ entity: 'films' })
-
-  const films = results.map(({ id, name, imageUrl, entity }) => ({
-    id,
-    title: name,
-    imageUrl,
-    entity
-  }))
+  const films = await getParsedResource({ entity: 'films' })
 
   return (
     <PageWrapper>

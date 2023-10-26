@@ -21,7 +21,7 @@ export default async function Specie({ params: { id } }: Props) {
         <section className="w-full max-w-7xl mx-auto">
           <div className="px-12 pb-24">
             <div className="mb-8">
-              <LinkButton href={ROUTES.species}>Back</LinkButton>
+              <LinkButton href={ROUTES.species}>Back to species</LinkButton>
             </div>
             <SpecieDetails specie={specie} />
           </div>

@@ -21,7 +21,7 @@ export default async function Vehicle({ params: { id } }: Props) {
         <section className="w-full max-w-7xl mx-auto">
           <div className="px-12 pb-24">
             <div className="mb-8">
-              <LinkButton href={ROUTES.vehicles}>Back</LinkButton>
+              <LinkButton href={ROUTES.vehicles}>Back to vehicles</LinkButton>
             </div>
             <VehicleDetails vehicle={vehicle} />
           </div>

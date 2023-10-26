@@ -1,17 +1,10 @@
 import { CardsSection } from '@/components/CardsSection/CardsSection'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 
-import { getResource } from '@/services/getResource'
+import { getParsedResource } from '@/utils/getParsedResource'
 
 export default async function Planets() {
-  const { results } = await getResource({ entity: 'planets' })
-
-  const planets = results.map(({ id, name, imageUrl, entity }) => ({
-    id,
-    title: name,
-    imageUrl,
-    entity
-  }))
+  const planets = await getParsedResource({ entity: 'planets' })
 
   return (
     <PageWrapper>

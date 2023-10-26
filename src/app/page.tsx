@@ -2,64 +2,17 @@ import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { CardsSection } from '@/components/CardsSection/CardsSection'
 import { ROUTES } from '@/components/Navigation/consts'
 
-import { getResource } from '@/services/getResource'
+import { getParsedResource } from '@/utils/getParsedResource'
 
 const MAX_CARDS_PER_SECTION = 4
 
 export default async function Home() {
-  const people = (await getResource({ entity: 'people', count: MAX_CARDS_PER_SECTION })).results.map(
-    ({ id, name, imageUrl, entity }) => ({
-      id,
-      title: name,
-      imageUrl,
-      entity
-    })
-  )
-
-  const films = (await getResource({ entity: 'films', count: MAX_CARDS_PER_SECTION })).results.map(
-    ({ id, name, imageUrl, entity }) => ({
-      id,
-      title: name,
-      imageUrl,
-      entity
-    })
-  )
-
-  const starships = (await getResource({ entity: 'starships', count: MAX_CARDS_PER_SECTION })).results.map(
-    ({ id, name, imageUrl, entity }) => ({
-      id,
-      title: name,
-      imageUrl,
-      entity
-    })
-  )
-
-  const vehicles = (await getResource({ entity: 'vehicles', count: MAX_CARDS_PER_SECTION })).results.map(
-    ({ id, name, imageUrl, entity }) => ({
-      id,
-      title: name,
-      imageUrl,
-      entity
-    })
-  )
-
-  const species = (await getResource({ entity: 'species', count: MAX_CARDS_PER_SECTION })).results.map(
-    ({ id, name, imageUrl, entity }) => ({
-      id,
-      title: name,
-      imageUrl,
-      entity
-    })
-  )
-
-  const planets = (await getResource({ entity: 'planets', count: MAX_CARDS_PER_SECTION })).results.map(
-    ({ id, name, imageUrl, entity }) => ({
-      id,
-      title: name,
-      imageUrl,
-      entity
-    })
-  )
+  const people = await getParsedResource({ entity: 'people', count: MAX_CARDS_PER_SECTION })
+  const films = await getParsedResource({ entity: 'films', count: MAX_CARDS_PER_SECTION })
+  const starships = await getParsedResource({ entity: 'starships', count: MAX_CARDS_PER_SECTION })
+  const vehicles = await getParsedResource({ entity: 'vehicles', count: MAX_CARDS_PER_SECTION })
+  const species = await getParsedResource({ entity: 'species', count: MAX_CARDS_PER_SECTION })
+  const planets = await getParsedResource({ entity: 'planets', count: MAX_CARDS_PER_SECTION })
 
   return (
     <PageWrapper>

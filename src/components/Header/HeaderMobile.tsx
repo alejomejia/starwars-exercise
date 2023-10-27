@@ -21,7 +21,7 @@ export function HeaderMobile() {
     <div>
       <div className="lg:hidden">
         <div className="px-6 py-4 flex justify-between items-center">
-          <div className="w-24">
+          <div className="w-32">
             <Link href={ROUTES.home}>
               <Logo />
             </Link>

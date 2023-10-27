@@ -41,7 +41,7 @@ export default async function Specie({ params: { id } }: Props) {
       <CountView id={id} entity="species" />
       <main>
         <section className="w-full max-w-7xl mx-auto">
-          <div className="px-12 pb-24">
+          <div className="px-8 lg:px-12">
             <div className="mb-8">
               <GoBackLink href={ROUTES.species}>Back to Species</GoBackLink>
             </div>

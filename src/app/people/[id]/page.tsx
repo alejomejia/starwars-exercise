@@ -39,7 +39,7 @@ export default async function Person({ params: { id } }: Props) {
       <CountView id={id} entity="people" />
       <main>
         <section className="w-full max-w-7xl mx-auto">
-          <div className="px-12">
+          <div className="px-8 lg:px-12">
             <div className="mb-8">
               <GoBackLink href={ROUTES.people}>Back to People</GoBackLink>
             </div>

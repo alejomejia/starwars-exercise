@@ -46,7 +46,7 @@ export default async function Vehicle({ params: { id } }: Props) {
       <CountView id={id} entity="vehicles" />
       <main>
         <section className="w-full max-w-7xl mx-auto">
-          <div className="px-12 pb-24">
+          <div className="px-8 lg:px-12">
             <div className="mb-8">
               <GoBackLink href={ROUTES.vehicles}>Back to Vehicles</GoBackLink>
             </div>

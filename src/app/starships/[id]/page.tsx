@@ -46,7 +46,7 @@ export default async function Starship({ params: { id } }: Props) {
       <CountView id={id} entity="starships" />
       <main>
         <section className="w-full max-w-7xl mx-auto">
-          <div className="px-12 pb-24">
+          <div className="px-8 lg:px-12">
             <div className="mb-8">
               <GoBackLink href={ROUTES.starships}>Back to Starships</GoBackLink>
             </div>

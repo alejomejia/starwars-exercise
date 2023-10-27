@@ -9,35 +9,35 @@ import { CustomFilm, CustomPerson, CustomPlanet, CustomSpecie, CustomStarship, C
 import { useLocalStorage } from './useLocalStorage'
 
 interface Props {
-  people: CustomPerson[]
-  films: CustomFilm[]
-  starships: CustomStarship[]
-  vehicles: CustomVehicle[]
-  species: CustomSpecie[]
-  planets: CustomPlanet[]
-  count: number
+  people?: CustomPerson[]
+  films?: CustomFilm[]
+  starships?: CustomStarship[]
+  vehicles?: CustomVehicle[]
+  species?: CustomSpecie[]
+  planets?: CustomPlanet[]
+  count?: number
 }
 
 export function useMostViewedResources({ people, films, starships, vehicles, species, planets, count }: Props) {
   const [views] = useLocalStorage<LocalStorageViews>('views', LS_INITIAL_VIEWS)
 
   const mostViewedResources = useMemo(() => {
-    const peopleWithViews = people.map((p) => ({ ...p, views: views.people[p.id] ?? 0 }))
+    const peopleWithViews = people ? people.map((p) => ({ ...p, views: views.people[p.id] ?? 0 })) : []
     const sortedPeopleByViews = peopleWithViews.sort((a, b) => b.views - a.views)
 
-    const filmsWithViews = films.map((f) => ({ ...f, views: views.films[f.id] ?? 0 }))
+    const filmsWithViews = films ? films.map((f) => ({ ...f, views: views.films[f.id] ?? 0 })) : []
     const sortedFilmsByViews = filmsWithViews.sort((a, b) => b.views - a.views)
 
-    const starshipsWithViews = starships.map((s) => ({ ...s, views: views.starships[s.id] ?? 0 }))
+    const starshipsWithViews = starships ? starships.map((s) => ({ ...s, views: views.starships[s.id] ?? 0 })) : []
     const sortedStarshipsByViews = starshipsWithViews.sort((a, b) => b.views - a.views)
 
-    const vehiclesWithViews = vehicles.map((v) => ({ ...v, views: views.vehicles[v.id] ?? 0 }))
+    const vehiclesWithViews = vehicles ? vehicles.map((v) => ({ ...v, views: views.vehicles[v.id] ?? 0 })) : []
     const sortedVehiclesByViews = vehiclesWithViews.sort((a, b) => b.views - a.views)
 
-    const speciesWithViews = species.map((s) => ({ ...s, views: views.species[s.id] ?? 0 }))
+    const speciesWithViews = species ? species.map((s) => ({ ...s, views: views.species[s.id] ?? 0 })) : []
     const sortedSpeciesByViews = speciesWithViews.sort((a, b) => b.views - a.views)
 
-    const planetsWithViews = species.map((p) => ({ ...p, views: views.planets[p.id] ?? 0 }))
+    const planetsWithViews = planets ? planets.map((p) => ({ ...p, views: views.planets[p.id] ?? 0 })) : []
     const sortedPlanetsByViews = planetsWithViews.sort((a, b) => b.views - a.views)
 
     return {

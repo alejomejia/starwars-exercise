@@ -2,9 +2,6 @@
 
 import { CardsSection } from '@/components/CardsSection/CardsSection'
 import { ROUTES } from '@/components/Navigation/consts'
-import { CardProps } from '../Card/Card'
-import { useLocalStorage } from '@/hooks/useLocalStorage'
-import { LS_INITIAL_VIEWS } from '@/storage/views'
 import { useMostViewedResources } from '@/hooks/useMostViewedResources'
 
 interface Props {

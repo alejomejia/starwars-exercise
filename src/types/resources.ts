@@ -2,6 +2,7 @@ import { ApiMetadata, Person, Film, Starship, Vehicle, Specie, Planet, Entity, E
 
 interface SharedCustomAttributes {
   id: number
+  title: string
   imageUrl: string | null
   entity: Entities
 }

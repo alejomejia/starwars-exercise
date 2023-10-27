@@ -1,32 +1,25 @@
-import { useLocalStorage } from '@/hooks/useLocalStorage'
-
 import pluralize from '@/utils/pluralize'
-import { Entities } from '@/types/api'
-import { LS_INITIAL_VIEWS, LocalStorageViews } from '@/storage/views'
 
 import { IconEye } from '../Icons/IconEye'
 
 interface Props {
-  id: number
-  entity: Entities
+  views: number
 }
 
-export function CardViews({ id, entity }: Props) {
-  const [views] = useLocalStorage<LocalStorageViews>('views', LS_INITIAL_VIEWS)
-
+export function CardViews({ views }: Props) {
   const getViewsText = (): string => {
-    const count = views[entity]?.[id] ?? 0
-    const pluralizeViews = pluralize({ count: Number(count), singular: 'view' })
-
-    return `${count} ${pluralizeViews}`
+    const pluralizeViews = pluralize({ count: views, singular: 'view' })
+    return `${views} ${pluralizeViews}`
   }
+
+  const viewsText = getViewsText()
 
   return (
     <div className="flex gap-2 items-center">
       <div className="w-5 h-5 text-slate-600">
         <IconEye />
       </div>
-      <span className="text-slate-500">{getViewsText()}</span>
+      <span className="text-slate-500">{viewsText}</span>
     </div>
   )
 }

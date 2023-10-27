@@ -5,10 +5,9 @@ import { ENDPOINTS } from './consts'
 
 interface Props {
   entity: Entities
-  count?: number
 }
 
-export async function getResource({ entity, count }: Props) {
+export async function getResource({ entity }: Props) {
   const res = await fetch(ENDPOINTS[entity])
 
   if (!res.ok) {

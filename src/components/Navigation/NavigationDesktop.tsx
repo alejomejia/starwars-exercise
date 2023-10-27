@@ -1,13 +1,11 @@
 import { NavigationLink } from './NavigationLink'
-import { ROUTES } from './consts'
+import { ROUTES, NAVIGATION_LINKS } from './consts'
 
-export function Navigation() {
-  const links = Object.entries(ROUTES)
-
+export function NavigationDesktop() {
   return (
     <nav>
       <ul className="flex gap-8 items-center">
-        {links.map(([label, path]) => (
+        {NAVIGATION_LINKS.map(([label, path]) => (
           <NavigationLink key={label} label={label} path={path} />
         ))}
       </ul>

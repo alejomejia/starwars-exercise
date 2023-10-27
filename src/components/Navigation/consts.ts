@@ -7,3 +7,5 @@ export const ROUTES = {
   species: '/species',
   planets: '/planets'
 }
+
+export const NAVIGATION_LINKS = Object.entries(ROUTES)

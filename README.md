@@ -6,9 +6,9 @@ StarWars exercise with [Swapi API](https://swapi.dev/) using NextJS 13 with App 
 
 ## How to run locally
 
-1- Clone the repository using `https://github.com/alejomejia/starwars-exercise.git`, `git@github.com:alejomejia/starwars-exercise.git` or download manually
-2- Go to folder and run `nvm i && npm i`. The project runs using Node v18.
-3- Run `npm run dev` or `npm run build && npm run start` to check it locally
+1. Clone the repository using `https://github.com/alejomejia/starwars-exercise.git`, `git@github.com:alejomejia/starwars-exercise.git` or download manually
+2. Go to folder and run `nvm i && npm i`. The project runs using Node v18.
+3. Run `npm run dev` or `npm run build && npm run start` to check it locally
 
 ## Features
 

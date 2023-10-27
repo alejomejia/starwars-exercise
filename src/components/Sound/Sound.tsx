@@ -4,6 +4,7 @@ import { useContext } from 'react'
 import useSound from 'use-sound'
 
 import { AppContext } from '@/context'
+import { IconButton } from '../IconButton/IconButton'
 import { IconVolumeOn } from '../Icons/IconVolumeOn'
 import { IconVolumeOff } from '../Icons/IconVolumeOff'
 
@@ -21,12 +22,5 @@ export function Sound() {
     isSoundEnabled ? pause() : play()
   }
 
-  return (
-    <button
-      className="w-12 h-12 flex items-center justify-center text-slate-50 bg-slate-900 rounded-full p-3 transition duration-200 hover:bg-slate-800"
-      onClick={toggleSound}
-    >
-      {isSoundEnabled ? <IconVolumeOn /> : <IconVolumeOff />}
-    </button>
-  )
+  return <IconButton onClick={toggleSound}>{isSoundEnabled ? <IconVolumeOn /> : <IconVolumeOff />}</IconButton>
 }

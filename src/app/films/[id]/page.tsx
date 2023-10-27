@@ -1,9 +1,9 @@
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { FilmDetails } from '@/components/Details/FilmDetails'
 import { CountView } from '@/components/CountView/CountView'
 import { LinkButton } from '@/components/LinkButton/LinkButton'
 import { getResourceById } from '@/services/getResourceById'
 import { ROUTES } from '@/components/Navigation/consts'
+import { PageDetails } from '@/components/PageDetails/PageDetails'
 
 interface Props {
   params: {
@@ -12,7 +12,33 @@ interface Props {
 }
 
 export default async function Film({ params: { id } }: Props) {
-  const film = await getResourceById('films', id)
+  const {
+    imageUrl,
+    title,
+    episode_id: episodeId,
+    opening_crawl: openingCrawl,
+    director,
+    producer,
+    release_date: releaseDate
+  } = await getResourceById('films', id)
+
+  const filmInfoMap = {
+    ['Director']: director,
+    ['Producer']: producer,
+    ['Release Date']: releaseDate
+  }
+
+  const episodeMap: Record<number, string> = {
+    1: 'I',
+    2: 'II',
+    3: 'III',
+    4: 'IV',
+    5: 'V',
+    6: 'VI'
+  }
+
+  const episode = episodeMap[episodeId]
+  const secondaryTitle = `Star Wars: Episode ${episode}`
 
   return (
     <PageWrapper>
@@ -23,7 +49,12 @@ export default async function Film({ params: { id } }: Props) {
             <div className="mb-8">
               <LinkButton href={ROUTES.films}>Back to films</LinkButton>
             </div>
-            <FilmDetails film={film} />
+            <PageDetails
+              title={{ main: title, secondary: secondaryTitle }}
+              imageUrl={imageUrl}
+              description={openingCrawl}
+              details={filmInfoMap}
+            />
           </div>
         </section>
       </main>

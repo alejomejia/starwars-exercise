@@ -4,6 +4,7 @@ import { LinkButton } from '@/components/LinkButton/LinkButton'
 import { getResourceById } from '@/services/getResourceById'
 import { ROUTES } from '@/components/Navigation/consts'
 import { PlanetDetails } from '@/components/Details/PlanetDetails'
+import { PageDetails } from '@/components/PageDetails/PageDetails'
 
 interface Props {
   params: {
@@ -12,7 +13,27 @@ interface Props {
 }
 
 export default async function Planet({ params: { id } }: Props) {
-  const planet = await getResourceById('planets', id)
+  const {
+    imageUrl,
+    name,
+    rotation_period: rotationPeriod,
+    orbital_period: orbitalPeriod,
+    diameter,
+    climate,
+    gravity,
+    terrain,
+    population
+  } = await getResourceById('planets', id)
+
+  const planetInfoMap = {
+    ['Diameter']: `${diameter}kms`,
+    ['Climate']: climate,
+    ['Terrain']: terrain,
+    ['Gravity']: gravity,
+    ['Population']: isNaN(Number(population)) ? population : `${population} beings`,
+    ['Rotation Period']: `${rotationPeriod} hours`,
+    ['Orbital Period']: `${orbitalPeriod} days`
+  }
 
   return (
     <PageWrapper>
@@ -23,7 +44,7 @@ export default async function Planet({ params: { id } }: Props) {
             <div className="mb-8">
               <LinkButton href={ROUTES.planets}>Back to planets</LinkButton>
             </div>
-            <PlanetDetails planet={planet} />
+            <PageDetails title={{ main: name }} imageUrl={imageUrl} details={planetInfoMap} />
           </div>
         </section>
       </main>

@@ -1,9 +1,9 @@
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { PersonDetails } from '@/components/Details/PersonDetails'
 import { CountView } from '@/components/CountView/CountView'
 import { LinkButton } from '@/components/LinkButton/LinkButton'
 import { getResourceById } from '@/services/getResourceById'
 import { ROUTES } from '@/components/Navigation/consts'
+import { PageDetails } from '@/components/PageDetails/PageDetails'
 
 interface Props {
   params: {
@@ -12,7 +12,27 @@ interface Props {
 }
 
 export default async function Person({ params: { id } }: Props) {
-  const person = await getResourceById('people', id)
+  const {
+    imageUrl,
+    name,
+    height,
+    mass,
+    hair_color: hairColor,
+    skin_color: skinColor,
+    gender,
+    birth_year: birthYear,
+    eye_color: eyeColor
+  } = await getResourceById('people', id)
+
+  const personInfoMap = {
+    ['Hair Color']: hairColor,
+    ['Eye Color']: eyeColor,
+    ['Skin Color']: skinColor,
+    ['Height']: `${height}cm`,
+    ['Mass']: `${mass}kg`,
+    ['Gender']: gender,
+    ['Birth year']: birthYear
+  }
 
   return (
     <PageWrapper>
@@ -23,7 +43,7 @@ export default async function Person({ params: { id } }: Props) {
             <div className="mb-8">
               <LinkButton href={ROUTES.people}>Back to people</LinkButton>
             </div>
-            <PersonDetails person={person} />
+            <PageDetails title={{ main: name }} imageUrl={imageUrl} details={personInfoMap} />
           </div>
         </section>
       </main>

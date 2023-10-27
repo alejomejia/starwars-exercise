@@ -3,7 +3,7 @@ import { CountView } from '@/components/CountView/CountView'
 import { LinkButton } from '@/components/LinkButton/LinkButton'
 import { getResourceById } from '@/services/getResourceById'
 import { ROUTES } from '@/components/Navigation/consts'
-import { SpecieDetails } from '@/components/Details/SpecieDetails'
+import { PageDetails } from '@/components/PageDetails/PageDetails'
 
 interface Props {
   params: {
@@ -12,7 +12,29 @@ interface Props {
 }
 
 export default async function Specie({ params: { id } }: Props) {
-  const specie = await getResourceById('species', id)
+  const {
+    imageUrl,
+    name,
+    classification,
+    designation,
+    hair_colors: hairColors,
+    eye_colors: eyeColors,
+    skin_colors: skinColors,
+    language,
+    average_height: averageHeight,
+    average_lifespan: averageLifespan
+  } = await getResourceById('species', id)
+
+  const specieInfoMap = {
+    ['Classification']: classification,
+    ['Designation']: designation,
+    ['Hair Colors']: hairColors,
+    ['Eye Colors']: eyeColors,
+    ['Skin Colors']: skinColors,
+    ['Language']: language,
+    ['Average Height']: averageHeight === 'n/a' ? averageHeight : `${averageHeight}cm`,
+    ['Average Lifespan']: `${averageLifespan} years`
+  }
 
   return (
     <PageWrapper>
@@ -23,7 +45,7 @@ export default async function Specie({ params: { id } }: Props) {
             <div className="mb-8">
               <LinkButton href={ROUTES.species}>Back to species</LinkButton>
             </div>
-            <SpecieDetails specie={specie} />
+            <PageDetails title={{ main: name }} imageUrl={imageUrl} details={specieInfoMap} />
           </div>
         </section>
       </main>

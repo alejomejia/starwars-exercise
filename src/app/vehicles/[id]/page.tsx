@@ -3,7 +3,7 @@ import { CountView } from '@/components/CountView/CountView'
 import { LinkButton } from '@/components/LinkButton/LinkButton'
 import { getResourceById } from '@/services/getResourceById'
 import { ROUTES } from '@/components/Navigation/consts'
-import { VehicleDetails } from '@/components/Details/VehicleDetails'
+import { PageDetails } from '@/components/PageDetails/PageDetails'
 
 interface Props {
   params: {
@@ -12,7 +12,34 @@ interface Props {
 }
 
 export default async function Vehicle({ params: { id } }: Props) {
-  const vehicle = await getResourceById('vehicles', id)
+  const {
+    imageUrl,
+    name,
+    model,
+    manufacturer,
+    cost_in_credits: costInCredits,
+    length,
+    max_atmosphering_speed: maxAtmospheringSpeed,
+    crew,
+    passengers,
+    cargo_capacity: cargoCapacity,
+    consumables,
+    vehicle_class: vehicleClass
+  } = await getResourceById('vehicles', id)
+
+  const hasSameModelAsName = model === name
+
+  const vehicleInfoMap = {
+    ['Manufacturers']: manufacturer,
+    ['Const In Credits']: `${costInCredits} imperial credits`,
+    ['Length']: `${length}m`,
+    ['Maximum Atmosphering Speed']: maxAtmospheringSpeed,
+    ['Crew']: crew,
+    ['Passengers']: passengers,
+    ['Cargo Capacity']: `${cargoCapacity}kg`,
+    ['Consumables']: consumables,
+    ['Vehicle Class']: vehicleClass
+  }
 
   return (
     <PageWrapper>
@@ -23,7 +50,11 @@ export default async function Vehicle({ params: { id } }: Props) {
             <div className="mb-8">
               <LinkButton href={ROUTES.vehicles}>Back to vehicles</LinkButton>
             </div>
-            <VehicleDetails vehicle={vehicle} />
+            <PageDetails
+              title={{ main: name, secondary: !hasSameModelAsName ? model : '' }}
+              imageUrl={imageUrl}
+              details={vehicleInfoMap}
+            />
           </div>
         </section>
       </main>

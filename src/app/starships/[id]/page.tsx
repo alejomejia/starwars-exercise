@@ -3,7 +3,7 @@ import { CountView } from '@/components/CountView/CountView'
 import { LinkButton } from '@/components/LinkButton/LinkButton'
 import { getResourceById } from '@/services/getResourceById'
 import { ROUTES } from '@/components/Navigation/consts'
-import { StarshipDetails } from '@/components/Details/StarshipDetails'
+import { PageDetails } from '@/components/PageDetails/PageDetails'
 
 interface Props {
   params: {
@@ -12,7 +12,34 @@ interface Props {
 }
 
 export default async function Starship({ params: { id } }: Props) {
-  const starship = await getResourceById('starships', id)
+  const {
+    imageUrl,
+    name,
+    model,
+    manufacturer,
+    cost_in_credits: costInCredits,
+    length,
+    max_atmosphering_speed: maxAtmospheringSpeed,
+    crew,
+    passengers,
+    cargo_capacity: cargoCapacity,
+    consumables,
+    hyperdrive_rating: hyperdriveRating
+  } = await getResourceById('starships', id)
+
+  const hasSameModelAsName = model === name
+
+  const starshipInfoMap = {
+    ['Manufacturers']: manufacturer,
+    ['Const In Credits']: `${costInCredits} imperial credits`,
+    ['Length']: `${length}m`,
+    ['Maximum Atmosphering Speed']: maxAtmospheringSpeed,
+    ['Crew']: crew,
+    ['Passengers']: passengers,
+    ['Cargo Capacity']: `${cargoCapacity}kg`,
+    ['Consumables']: consumables,
+    ['Hyperdrive Rating']: hyperdriveRating
+  }
 
   return (
     <PageWrapper>
@@ -23,7 +50,11 @@ export default async function Starship({ params: { id } }: Props) {
             <div className="mb-8">
               <LinkButton href={ROUTES.starships}>Back to starships</LinkButton>
             </div>
-            <StarshipDetails starship={starship} />
+            <PageDetails
+              title={{ main: name, secondary: !hasSameModelAsName ? model : '' }}
+              imageUrl={imageUrl}
+              details={starshipInfoMap}
+            />
           </div>
         </section>
       </main>

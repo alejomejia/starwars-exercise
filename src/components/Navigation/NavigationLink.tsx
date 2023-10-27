@@ -13,7 +13,7 @@ interface Props {
 
 export function NavigationLink({ label, path, onMobileClick }: Props) {
   const pathname = usePathname()
-  const isActive = pathname === path
+  const isActive = pathname.split('/')[1] === path.split('/')[1]
 
   const linkClassnames =
     'uppercase lg:py-4 flex justify-center items-center text-xl lg:text-sm font-semibold transform transition-color duration-200 hover:text-yellow-300'

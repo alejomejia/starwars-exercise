@@ -8,7 +8,7 @@ import { IconButton } from '../IconButton/IconButton'
 import { IconVolumeOn } from '../Icons/IconVolumeOn'
 import { IconVolumeOff } from '../Icons/IconVolumeOff'
 
-export function Sound() {
+export function SoundToggle() {
   const { isSoundEnabled, setIsSoundEnabled } = useContext(AppContext)
 
   const [play, { pause }] = useSound('/sounds/imperial-march.mp3', {

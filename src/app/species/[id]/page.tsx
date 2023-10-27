@@ -1,9 +1,9 @@
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { CountView } from '@/components/CountView/CountView'
-import { LinkButton } from '@/components/LinkButton/LinkButton'
 import { getResourceById } from '@/services/getResourceById'
 import { ROUTES } from '@/components/Navigation/consts'
 import { PageDetails } from '@/components/PageDetails/PageDetails'
+import { GoBackLink } from '@/components/GoBackLink/GoBackLink'
 
 interface Props {
   params: {
@@ -43,7 +43,7 @@ export default async function Specie({ params: { id } }: Props) {
         <section className="w-full max-w-7xl mx-auto">
           <div className="px-12 pb-24">
             <div className="mb-8">
-              <LinkButton href={ROUTES.species}>Back to species</LinkButton>
+              <GoBackLink href={ROUTES.species}>Back to Species</GoBackLink>
             </div>
             <PageDetails title={{ main: name }} imageUrl={imageUrl} details={specieInfoMap} />
           </div>

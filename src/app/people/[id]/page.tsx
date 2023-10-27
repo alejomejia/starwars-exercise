@@ -1,6 +1,6 @@
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
 import { CountView } from '@/components/CountView/CountView'
-import { LinkButton } from '@/components/LinkButton/LinkButton'
+import { GoBackLink } from '@/components/GoBackLink/GoBackLink'
 import { getResourceById } from '@/services/getResourceById'
 import { ROUTES } from '@/components/Navigation/consts'
 import { PageDetails } from '@/components/PageDetails/PageDetails'
@@ -41,7 +41,7 @@ export default async function Person({ params: { id } }: Props) {
         <section className="w-full max-w-7xl mx-auto">
           <div className="px-12">
             <div className="mb-8">
-              <LinkButton href={ROUTES.people}>Back to people</LinkButton>
+              <GoBackLink href={ROUTES.people}>Back to People</GoBackLink>
             </div>
             <PageDetails title={{ main: name }} imageUrl={imageUrl} details={personInfoMap} />
           </div>

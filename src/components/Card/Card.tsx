@@ -23,7 +23,7 @@ export function Card({ id, title, imageUrl, entity, views }: CardProps) {
           />
         </picture>
         <div className="bg-slate-900 p-4 rounded-b-lg transition duration-200 group-hover:bg-slate-800">
-          <h3 className="text-slate-300 font-medium mb-2">{title}</h3>
+          <h3 className="text-slate-300 font-medium sm:mb-1">{title}</h3>
           <CardViews views={views} />
         </div>
       </article>

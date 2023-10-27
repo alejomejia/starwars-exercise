@@ -5,10 +5,8 @@ export default async function Home() {
   return (
     <PageWrapper>
       <main className="min-h-screen">
-        <div className="pb-20">
-          <div className="flex flex-col gap-20">
-            <MostViewedSectionServer />
-          </div>
+        <div className="flex flex-col gap-20">
+          <MostViewedSectionServer />
         </div>
       </main>
     </PageWrapper>

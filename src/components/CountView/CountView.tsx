@@ -4,25 +4,25 @@ import { useEffect } from 'react'
 
 import { useLocalStorage } from '@/hooks/useLocalStorage'
 import { LS_INITIAL_VIEWS, LocalStorageViews } from '@/storage/views'
-import { Entities } from '@/types/api'
+import { ResourceString } from '@/lib/types'
 
 interface Props {
   id: string
-  entity: Entities
+  resource: ResourceString
 }
 
-export function CountView({ id, entity }: Props) {
+export function CountView({ id, resource }: Props) {
   const [_, setViews] = useLocalStorage<LocalStorageViews>('views', LS_INITIAL_VIEWS)
 
   useEffect(() => {
     setViews((prev) => {
-      const currentIdCount = prev[entity]?.[id]
+      const currentIdCount = prev[resource]?.[id]
       const idCount = (currentIdCount ?? 0) + 1
 
       return {
         ...prev,
-        [entity]: {
-          ...prev[entity],
+        [resource]: {
+          ...prev[resource],
           [id]: idCount
         }
       }

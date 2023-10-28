@@ -1,16 +1,16 @@
 import { BASE_API_URL } from './const'
-import { ApiResourceMap, ResourceString } from './types'
+import { ApiResourcesMap, ResourceString } from './types'
 
 export async function fetchResource<T extends ResourceString>(
   resource: T,
   currentPage?: number
-): Promise<ApiResourceMap[T]> {
+): Promise<ApiResourcesMap[T]> {
   const segments = [BASE_API_URL, `/${resource}`, currentPage ? `/?page=${currentPage}` : '']
   const url = segments.join('')
 
   try {
     const response = await fetch(url)
-    const data: ApiResourceMap[T] = await response.json()
+    const data = await response.json()
 
     return data
   } catch (error) {

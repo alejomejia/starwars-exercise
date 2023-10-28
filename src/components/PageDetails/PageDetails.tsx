@@ -3,20 +3,16 @@
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import { variantImage, variantContent } from './animation'
+import { ParsedResource } from '@/lib/types'
+import { getDataByResource } from './utils/getDataByResource'
 
-type Title = {
-  main: string
-  secondary?: string
+interface Props<T extends ParsedResource> {
+  resourceData: T
 }
 
-interface Props {
-  title: Title
-  imageUrl: string | null
-  description?: string
-  details: Record<string, string>
-}
+export function PageDetails({ resourceData }: Props<ParsedResource>) {
+  const { title, imageUrl, description, details } = getDataByResource({ resourceData })
 
-export function PageDetails({ title, imageUrl, description, details }: Props) {
   const Heading = title.secondary ? 'h2' : 'h1'
 
   const detailsInfo = Object.entries(details).map(([key, value], index) => (

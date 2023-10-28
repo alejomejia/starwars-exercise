@@ -150,6 +150,15 @@ type ApiPlanets = ApiMetadata & {
 }
 
 export type ApiResourceMap = {
+  people: ApiPerson
+  films: ApiFilm
+  starships: ApiStarship
+  vehicles: ApiVehicle
+  species: ApiSpecie
+  planets: ApiPlanet
+}
+
+export type ApiResourcesMap = {
   people: ApiPeople
   films: ApiFilms
   starships: ApiStarships
@@ -162,8 +171,28 @@ type ApiResource = ApiPerson | ApiFilm | ApiStarship | ApiVehicle | ApiSpecie | 
 
 /** Type Guards */
 
+export function isApiPerson(resource: ApiResource): resource is ApiPerson {
+  return (resource as ApiPerson).height !== undefined
+}
+
 export function isApiFilm(resource: ApiResource): resource is ApiFilm {
   return (resource as ApiFilm).opening_crawl !== undefined
+}
+
+export function isApiStarship(resource: ApiResource): resource is ApiStarship {
+  return (resource as ApiStarship).starship_class !== undefined
+}
+
+export function isApiVehicle(resource: ApiResource): resource is ApiVehicle {
+  return (resource as ApiVehicle).vehicle_class !== undefined
+}
+
+export function isApiSpecie(resource: ApiResource): resource is ApiSpecie {
+  return (resource as ApiSpecie).classification !== undefined
+}
+
+export function isApiPlanet(resource: ApiResource): resource is ApiPlanet {
+  return (resource as ApiPlanet).diameter !== undefined
 }
 
 /** Parsed Resources */
@@ -207,6 +236,15 @@ type Planets = ApiMetadata & {
   results: Planet[]
 }
 
+export type ParsedResourceMap = {
+  people: Person
+  films: Film
+  starships: Starship
+  vehicles: Vehicle
+  species: Specie
+  planets: Planet
+}
+
 export type ParsedResourcesMap = {
   people: People
   films: Films
@@ -215,5 +253,7 @@ export type ParsedResourcesMap = {
   species: Species
   planets: Planets
 }
+
+export type ParsedResource = Person | Film | Starship | Vehicle | Specie | Planet
 
 export type ParsedResources = Person[] | Film[] | Starship[] | Vehicle[] | Specie[] | Planet[]

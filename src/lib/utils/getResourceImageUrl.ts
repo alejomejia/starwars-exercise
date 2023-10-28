@@ -1,7 +1,7 @@
 import { FetchResourceById } from '../types'
 
 /**
- * Used to grab the entity image from url.
+ * Used to grab the resource image from url.
  * It returns `null` if image doesn't exist.
  */
 

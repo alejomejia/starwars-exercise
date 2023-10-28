@@ -1,4 +1,4 @@
-import { Entities } from '@/types/api'
+import { ResourceString } from '@/lib/types'
 
 export const LS_INITIAL_VIEWS: LocalStorageViews = {
   people: {},
@@ -9,6 +9,5 @@ export const LS_INITIAL_VIEWS: LocalStorageViews = {
   planets: {}
 }
 
-type EntityViews = Record<string, number>
-
-export type LocalStorageViews = Record<Entities, EntityViews>
+type ResourceViews = Record<string, number>
+export type LocalStorageViews = Record<ResourceString, ResourceViews>

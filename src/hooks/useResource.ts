@@ -1,14 +1,9 @@
 'use client'
 
-import { LS_INITIAL_VIEWS } from '@/storage/views'
+import { LS_INITIAL_VIEWS, LocalStorageViews } from '@/storage/views'
 import { ParsedResources, ResourceString } from '@/lib/types'
 
 import { useLocalStorage } from './useLocalStorage'
-
-/* Move to useLocalStorage */
-type ResourceViews = Record<string, number>
-export type LocalStorageViews = Record<ResourceString, ResourceViews>
-/*** */
 
 export function useResource<T extends ParsedResources>(resource: T, sortByViews?: boolean, count?: number) {
   const [views] = useLocalStorage<LocalStorageViews>('views', LS_INITIAL_VIEWS)

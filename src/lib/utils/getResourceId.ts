@@ -1,5 +1,5 @@
 /**
- * Using the entity `url`, returns the entity `id` as `number`
+ * Using the resource `url`, returns the resource `id` as `number`
  */
 
 export function getResourceId(url: string): number {

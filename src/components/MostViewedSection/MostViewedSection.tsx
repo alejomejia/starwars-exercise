@@ -2,52 +2,58 @@
 
 import { CardsSection } from '@/components/CardsSection/CardsSection'
 import { ROUTES } from '@/components/Navigation/consts'
-import { useMostViewedResources } from '@/hooks/useMostViewedResources'
+import { useResource } from '@/hooks/useResource'
+import { Film, Person, Starship, Vehicle, Specie, Planet } from '@/lib/types'
 
 interface Props {
-  people: any // temporal
-  films: any // temporal
-  starships: any // temporal
-  vehicles: any // temporal
-  species: any // temporal
-  planets: any // temporal
+  people: Person[]
+  films: Film[]
+  starships: Starship[]
+  vehicles: Vehicle[]
+  species: Specie[]
+  planets: Planet[]
 }
 
 const MAX_CARDS_PER_SECTION = 4
 
 export function MostViewedSection(resources: Props) {
-  const mostViewedResources = useMostViewedResources({ ...resources, count: MAX_CARDS_PER_SECTION })
+  const people = useResource(resources.people, true, MAX_CARDS_PER_SECTION)
+  const films = useResource(resources.films, true, MAX_CARDS_PER_SECTION)
+  const starships = useResource(resources.starships, true, MAX_CARDS_PER_SECTION)
+  const vehicles = useResource(resources.vehicles, true, MAX_CARDS_PER_SECTION)
+  const species = useResource(resources.species, true, MAX_CARDS_PER_SECTION)
+  const planets = useResource(resources.planets, true, MAX_CARDS_PER_SECTION)
 
   const cardSections = [
     {
-      title: 'Most viewed people',
+      title: 'Most Viewed People',
       viewMoreRoute: ROUTES.people,
-      cards: mostViewedResources.people
+      cards: people
     },
     {
-      title: 'Most viewed films',
+      title: 'Most Viewed Films',
       viewMoreRoute: ROUTES.films,
-      cards: mostViewedResources.films
+      cards: films
     },
     {
-      title: 'Most viewed starships',
+      title: 'Most Viewed Starships',
       viewMoreRoute: ROUTES.starships,
-      cards: mostViewedResources.starships
+      cards: starships
     },
     {
-      title: 'Most viewed vehicles',
+      title: 'Most Viewed Vehicles',
       viewMoreRoute: ROUTES.vehicles,
-      cards: mostViewedResources.vehicles
+      cards: vehicles
     },
     {
-      title: 'Most viewed species',
+      title: 'Most Viewed Species',
       viewMoreRoute: ROUTES.species,
-      cards: mostViewedResources.species
+      cards: species
     },
     {
-      title: 'Most viewed planets',
+      title: 'Most Viewed Planets',
       viewMoreRoute: ROUTES.planets,
-      cards: mostViewedResources.planets
+      cards: planets
     }
   ]
 

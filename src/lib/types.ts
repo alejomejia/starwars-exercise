@@ -176,12 +176,12 @@ export type ParsedProperties = {
   views?: number
 }
 
-type Person = ApiPerson & ParsedProperties
-type Film = ApiFilm & ParsedProperties
-type Starship = ApiStarship & ParsedProperties
-type Vehicle = ApiVehicle & ParsedProperties
-type Specie = ApiSpecie & ParsedProperties
-type Planet = ApiPlanet & ParsedProperties
+export type Person = ApiPerson & ParsedProperties
+export type Film = ApiFilm & ParsedProperties
+export type Starship = ApiStarship & ParsedProperties
+export type Vehicle = ApiVehicle & ParsedProperties
+export type Specie = ApiSpecie & ParsedProperties
+export type Planet = ApiPlanet & ParsedProperties
 
 type People = ApiMetadata & {
   results: Person[]

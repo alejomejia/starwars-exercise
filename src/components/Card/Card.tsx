@@ -1,20 +1,15 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Entities } from '@/types/api'
+
+import { ParsedProperties } from '@/lib/types'
 
 import { CardViews } from './CardViews'
 
-export interface CardProps {
-  id: number
-  title: string
-  imageUrl: string | null
-  entity: Entities
-  views: number
-}
+interface Props extends ParsedProperties {}
 
-export function Card({ id, title, imageUrl, entity, views }: CardProps) {
+export function Card({ id, title, imageUrl, resource, views }: Props) {
   return (
-    <Link href={`/${entity}/${id}`} className="group">
+    <Link href={`/${resource}/${id}`} className="group">
       <article className="flex flex-col justify-center h-full transform transition duration-200 hover:-translate-y-1">
         <picture>
           <Image

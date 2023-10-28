@@ -1,14 +1,15 @@
+import { ParsedResources } from '@/lib/types'
+
 import { LinkButton } from '../LinkButton/LinkButton'
 import { CardsGrid } from '../CardsGrid/CardsGrid'
-import { CardProps } from '../Card/Card'
 
-interface Props {
+interface Props<T extends ParsedResources> {
   title: string
   viewMoreRoute?: string
-  cards: CardProps[]
+  cards: T
 }
 
-export function CardsSection({ title, viewMoreRoute, cards }: Props) {
+export function CardsSection({ title, viewMoreRoute, cards }: Props<ParsedResources>) {
   return (
     <section className="w-full max-w-7xl mx-auto">
       <div className="px-6 sm:px-8 lg:px-12">

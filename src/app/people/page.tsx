@@ -1,14 +1,13 @@
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { GeneralPeople } from '@/components/General/GeneralPeople'
-
-import { getParsedResource } from '@/utils/getParsedResource'
+import { GeneralPage } from '@/components/GeneralPage/GeneralPage'
+import { parsedResource } from '@/lib/parsedResource'
 
 export default async function People() {
-  const people = await getParsedResource({ entity: 'people' })
+  const { results } = await parsedResource('people')
 
   return (
     <PageWrapper>
-      <GeneralPeople people={people} />
+      <GeneralPage resourceData={results} />
     </PageWrapper>
   )
 }

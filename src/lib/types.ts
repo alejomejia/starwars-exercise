@@ -168,7 +168,7 @@ export function isApiFilm(resource: ApiResource): resource is ApiFilm {
 
 /** Parsed Resources */
 
-type ParsedProperties = {
+export type ParsedProperties = {
   id: number
   title: string
   imageUrl: string | null

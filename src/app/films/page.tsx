@@ -1,14 +1,13 @@
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { GeneralFilms } from '@/components/General/GeneralFilms'
-
-import { getParsedResource } from '@/utils/getParsedResource'
+import { GeneralPage } from '@/components/GeneralPage/GeneralPage'
+import { parsedResource } from '@/lib/parsedResource'
 
 export default async function Films() {
-  const films = await getParsedResource({ entity: 'films' })
+  const data = await parsedResource('films')
 
   return (
     <PageWrapper>
-      <GeneralFilms films={films} />
+      <GeneralPage resourceData={data.results} />
     </PageWrapper>
   )
 }

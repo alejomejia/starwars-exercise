@@ -1,14 +1,13 @@
-import { GeneralVehicles } from '@/components/General/GeneralVehicles'
+import { GeneralPage } from '@/components/GeneralPage/GeneralPage'
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-
-import { getParsedResource } from '@/utils/getParsedResource'
+import { parsedResource } from '@/lib/parsedResource'
 
 export default async function Vehicles() {
-  const vehicles = await getParsedResource({ entity: 'vehicles' })
+  const { results } = await parsedResource('vehicles')
 
   return (
     <PageWrapper>
-      <GeneralVehicles vehicles={vehicles} />
+      <GeneralPage resourceData={results} />
     </PageWrapper>
   )
 }

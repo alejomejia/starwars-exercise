@@ -10,17 +10,11 @@ type ResourceViews = Record<string, number>
 export type LocalStorageViews = Record<ResourceString, ResourceViews>
 /*** */
 
-interface Props<T extends ParsedResources> {
-  resources: T
-  sortByViews?: boolean
-  count?: number
-}
-
-export function useResource({ resources, sortByViews, count }: Props<ParsedResources>) {
+export function useResource<T extends ParsedResources>(resource: T, sortByViews?: boolean, count?: number) {
   const [views] = useLocalStorage<LocalStorageViews>('views', LS_INITIAL_VIEWS)
 
-  const resourceWithViews = resources.map((r) => ({ ...r, views: views[r.resource][r.id] ?? 0 }))
+  const resourceWithViews = resource.map((r) => ({ ...r, views: views[r.resource][r.id] ?? 0 }))
   const sortedResourceByViews = sortByViews ? resourceWithViews.sort((a, b) => b.views - a.views) : resourceWithViews
 
-  return count ? sortedResourceByViews.slice(0, count) : sortedResourceByViews
+  return (count ? sortedResourceByViews.slice(0, count) : sortedResourceByViews) as T
 }

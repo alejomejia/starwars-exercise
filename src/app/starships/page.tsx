@@ -1,14 +1,13 @@
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { GeneralStarships } from '@/components/General/GeneralStarships'
-
-import { getParsedResource } from '@/utils/getParsedResource'
+import { GeneralPage } from '@/components/GeneralPage/GeneralPage'
+import { parsedResource } from '@/lib/parsedResource'
 
 export default async function Starships() {
-  const starships = await getParsedResource({ entity: 'starships' })
+  const { results } = await parsedResource('starships')
 
   return (
     <PageWrapper>
-      <GeneralStarships starships={starships} />
+      <GeneralPage resourceData={results} />
     </PageWrapper>
   )
 }

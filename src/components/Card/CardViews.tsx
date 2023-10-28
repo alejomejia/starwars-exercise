@@ -3,12 +3,12 @@ import pluralize from '@/utils/pluralize'
 import { IconEye } from '../Icons/IconEye'
 
 interface Props {
-  views: number
+  views?: number
 }
 
 export function CardViews({ views }: Props) {
   const getViewsText = (): string => {
-    const pluralizeViews = pluralize({ count: views, singular: 'view' })
+    const pluralizeViews = pluralize({ count: views ?? 0, singular: 'view' })
     return `${views} ${pluralizeViews}`
   }
 

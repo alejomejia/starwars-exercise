@@ -1,14 +1,13 @@
 import { PageWrapper } from '@/components/PageWrapper/PageWrapper'
-import { GeneralPlanets } from '@/components/General/GeneralPlanets'
-
-import { getParsedResource } from '@/utils/getParsedResource'
+import { GeneralPage } from '@/components/GeneralPage/GeneralPage'
+import { parsedResource } from '@/lib/parsedResource'
 
 export default async function Planets() {
-  const planets = await getParsedResource({ entity: 'planets' })
+  const { results } = await parsedResource('planets')
 
   return (
     <PageWrapper>
-      <GeneralPlanets planets={planets} />
+      <GeneralPage resourceData={results} />
     </PageWrapper>
   )
 }

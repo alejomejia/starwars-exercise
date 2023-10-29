@@ -7,10 +7,10 @@ export async function parsedResource<T extends ResourceString>(
   resource: T,
   currentPage?: string
 ): Promise<ParsedResourcesMap[T]> {
-  const data = await fetchResource(resource, currentPage)
+  const { count, next, previous, results } = await fetchResource(resource, currentPage)
 
-  const results = await Promise.all(
-    data.results.map(async (item) => {
+  const parsedResults = await Promise.all(
+    results.map(async (item) => {
       const id = getResourceId(item.url)
       const imageUrl = await getResourceImageUrl({ resource, id: String(id) })
       const name = isApiFilm(item) ? item.title : item.name
@@ -25,5 +25,7 @@ export async function parsedResource<T extends ResourceString>(
     })
   )
 
-  return { ...data, results } as ParsedResourcesMap[T]
+  const metadata = { count, next, previous }
+
+  return { ...metadata, results: parsedResults } as unknown as ParsedResourcesMap[T]
 }

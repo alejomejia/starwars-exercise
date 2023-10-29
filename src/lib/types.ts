@@ -198,7 +198,7 @@ export function isApiPlanet(resource: ApiResource): resource is ApiPlanet {
 /** Parsed Resources */
 
 export type ParsedProperties = {
-  id: number
+  id: string
   title: string
   imageUrl: string | null
   resource: ResourceString

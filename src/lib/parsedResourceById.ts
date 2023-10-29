@@ -7,9 +7,8 @@ export async function parsedResourceById<T extends ResourceString>(
   id: string
 ): Promise<ParsedResourceMap[T]> {
   const data = await fetchResourceById(resource, id)
-
   const imageUrl = await getResourceImageUrl({ resource, id })
   const name = isApiFilm(data) ? data.title : data.name
 
-  return { ...data, imageUrl, name, resource } as ParsedResourceMap[T]
+  return { ...data, id, imageUrl, name, resource } as ParsedResourceMap[T]
 }

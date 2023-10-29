@@ -15,14 +15,14 @@ interface Props {
 }
 
 export default async function Resource({ params: { resource }, searchParams: { page } }: Props) {
-  const { results, count } = await parsedResource(resource, page)
+  const { results, count, next, previous } = await parsedResource(resource, page)
 
   return (
     <PageWrapper>
       <main className="min-h-screen w-full max-w-7xl mx-auto">
         <div className="px-6 sm:px-8 lg:px-12">
           <GeneralPage resource={resource} resourceData={results} />
-          <Pagination resource={resource} resourceTotal={count} page={page} />
+          {(next || previous) && <Pagination resource={resource} resourceTotal={count} page={page} />}
         </div>
       </main>
     </PageWrapper>

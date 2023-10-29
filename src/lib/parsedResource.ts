@@ -12,7 +12,7 @@ export async function parsedResource<T extends ResourceString>(
   const parsedResults = await Promise.all(
     results.map(async (item) => {
       const id = getResourceId(item.url)
-      const imageUrl = await getResourceImageUrl({ resource, id: String(id) })
+      const imageUrl = await getResourceImageUrl({ resource, id })
       const name = isApiFilm(item) ? item.title : item.name
 
       return {
@@ -20,7 +20,8 @@ export async function parsedResource<T extends ResourceString>(
         id,
         title: name,
         imageUrl,
-        resource
+        resource,
+        views: 0
       }
     })
   )

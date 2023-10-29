@@ -2,7 +2,7 @@
  * Using the resource `url`, returns the resource `id` as `number`
  */
 
-export function getResourceId(url: string): number {
+export function getResourceId(url: string): string {
   const parts = url.split('/')
-  return Number(parts[parts.length - 2])
+  return parts[parts.length - 2]
 }

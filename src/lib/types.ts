@@ -202,7 +202,7 @@ export type ParsedProperties = {
   title: string
   imageUrl: string | null
   resource: ResourceString
-  views?: number
+  views: number
 }
 
 export type Person = ApiPerson & ParsedProperties

@@ -2,7 +2,7 @@
 
 import { CardsSection } from '@/components/CardsSection/CardsSection'
 import { ROUTES } from '@/components/Navigation/consts'
-import { useResource } from '@/hooks/useResource'
+import { useResources } from '@/hooks/useResources'
 import { Film, Person, Starship, Vehicle, Specie, Planet } from '@/lib/types'
 
 interface Props {
@@ -17,43 +17,43 @@ interface Props {
 const MAX_CARDS_PER_SECTION = 4
 
 export function MostViewedSection(resources: Props) {
-  const people = useResource(resources.people, true, MAX_CARDS_PER_SECTION)
-  const films = useResource(resources.films, true, MAX_CARDS_PER_SECTION)
-  const starships = useResource(resources.starships, true, MAX_CARDS_PER_SECTION)
-  const vehicles = useResource(resources.vehicles, true, MAX_CARDS_PER_SECTION)
-  const species = useResource(resources.species, true, MAX_CARDS_PER_SECTION)
-  const planets = useResource(resources.planets, true, MAX_CARDS_PER_SECTION)
+  const people = useResources(resources.people)
+  const films = useResources(resources.films)
+  const starships = useResources(resources.starships)
+  const vehicles = useResources(resources.vehicles)
+  const species = useResources(resources.species)
+  const planets = useResources(resources.planets)
 
   const cardSections = [
     {
       title: 'Most Viewed People',
       viewMoreRoute: ROUTES.people,
-      cards: people
+      cards: people.sort((a, b) => b.views - a.views).slice(0, MAX_CARDS_PER_SECTION)
     },
     {
       title: 'Most Viewed Films',
       viewMoreRoute: ROUTES.films,
-      cards: films
+      cards: films.sort((a, b) => b.views - a.views).slice(0, MAX_CARDS_PER_SECTION)
     },
     {
       title: 'Most Viewed Starships',
       viewMoreRoute: ROUTES.starships,
-      cards: starships
+      cards: starships.sort((a, b) => b.views - a.views).slice(0, MAX_CARDS_PER_SECTION)
     },
     {
       title: 'Most Viewed Vehicles',
       viewMoreRoute: ROUTES.vehicles,
-      cards: vehicles
+      cards: vehicles.sort((a, b) => b.views - a.views).slice(0, MAX_CARDS_PER_SECTION)
     },
     {
       title: 'Most Viewed Species',
       viewMoreRoute: ROUTES.species,
-      cards: species
+      cards: species.sort((a, b) => b.views - a.views).slice(0, MAX_CARDS_PER_SECTION)
     },
     {
       title: 'Most Viewed Planets',
       viewMoreRoute: ROUTES.planets,
-      cards: planets
+      cards: planets.sort((a, b) => b.views - a.views).slice(0, MAX_CARDS_PER_SECTION)
     }
   ]
 

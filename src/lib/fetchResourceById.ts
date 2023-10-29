@@ -1,8 +1,8 @@
-import { BASE_API_URL } from './const'
+import { SWAPI_BASE_API_URL } from './const'
 import { ApiResourceMap, ResourceString } from './types'
 
 export async function fetchResourceById<T extends ResourceString>(resource: T, id: string): Promise<ApiResourceMap[T]> {
-  const url = `${BASE_API_URL}/${resource}/${id}`
+  const url = `${SWAPI_BASE_API_URL}/${resource}/${id}`
 
   try {
     const response = await fetch(url)

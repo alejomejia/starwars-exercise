@@ -1,3 +1,4 @@
+import { SW_VISUAL_GUIDE_BASE_URL } from '../const'
 import { FetchResourceById } from '../types'
 
 /**
@@ -6,10 +7,8 @@ import { FetchResourceById } from '../types'
  */
 
 export async function getResourceImageUrl({ resource, id }: FetchResourceById): Promise<string | null> {
-  const BASE_URL = 'https://starwars-visualguide.com/assets/img'
-
   const urlResourceName = resource === 'people' ? 'characters' : resource
-  const imageUrl = `${BASE_URL}/${urlResourceName}/${id}.jpg`
+  const imageUrl = `${SW_VISUAL_GUIDE_BASE_URL}/${urlResourceName}/${id}.jpg`
 
   const { ok } = await fetch(imageUrl)
 

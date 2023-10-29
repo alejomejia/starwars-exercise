@@ -1,6 +1,6 @@
 'use client'
 
-import { useResource } from '@/hooks/useResource'
+import { useResources } from '@/hooks/useResources'
 import { ParsedResources, ResourceString } from '@/lib/types'
 
 import { CardsSection } from '../CardsSection/CardsSection'
@@ -11,7 +11,7 @@ interface Props<T extends ParsedResources> {
 }
 
 export function GeneralPage({ resource, resourceData }: Props<ParsedResources>) {
-  const parsedResource = useResource(resourceData)
+  const parsedResource = useResources(resourceData)
 
   return (
     <div className="relative z-10 flex flex-col gap-20">

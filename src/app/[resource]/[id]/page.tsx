@@ -16,23 +16,13 @@ interface Props {
 export default async function Person({ params: { resource, id } }: Props) {
   const parsedResource = await parsedResourceById(resource, id)
 
-  // const personInfoMap = {
-  //   ['Hair Color']: hairColor,
-  //   ['Eye Color']: eyeColor,
-  //   ['Skin Color']: skinColor,
-  //   ['Height']: `${height}cm`,
-  //   ['Mass']: `${mass}kg`,
-  //   ['Gender']: gender,
-  //   ['Birth year']: birthYear
-  // }
-
   return (
     <PageWrapper>
       <CountView id={id} resource={resource} />
       <main>
         <section className="w-full max-w-7xl mx-auto">
           <div className="px-8 lg:px-12">
-            <div className="mb-8">
+            <div className="mb-8 w-48">
               <GoBackLink href={ROUTES[resource]}>Back to {resource}</GoBackLink>
             </div>
             <PageDetails resourceData={parsedResource} />

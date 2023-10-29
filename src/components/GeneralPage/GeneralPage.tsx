@@ -14,10 +14,8 @@ export function GeneralPage({ resource, resourceData }: Props<ParsedResources>) 
   const parsedResource = useResource(resourceData)
 
   return (
-    <main className="min-h-screen">
-      <div className="flex flex-col gap-20">
-        <CardsSection title={`All ${resource}`} cards={parsedResource} />
-      </div>
-    </main>
+    <div className="relative z-10 flex flex-col gap-20">
+      <CardsSection title={`All ${resource}`} cards={parsedResource} />
+    </div>
   )
 }

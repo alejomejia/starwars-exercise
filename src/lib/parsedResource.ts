@@ -5,7 +5,7 @@ import { getResourceImageUrl } from './utils/getResourceImageUrl'
 
 export async function parsedResource<T extends ResourceString>(
   resource: T,
-  currentPage?: number
+  currentPage?: string
 ): Promise<ParsedResourcesMap[T]> {
   const data = await fetchResource(resource, currentPage)
 

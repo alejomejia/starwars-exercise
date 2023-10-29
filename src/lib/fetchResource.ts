@@ -3,7 +3,7 @@ import { ApiResourcesMap, ResourceString } from './types'
 
 export async function fetchResource<T extends ResourceString>(
   resource: T,
-  currentPage?: number
+  currentPage?: string
 ): Promise<ApiResourcesMap[T]> {
   const segments = [BASE_API_URL, `/${resource}`, currentPage ? `/?page=${currentPage}` : '']
   const url = segments.join('')

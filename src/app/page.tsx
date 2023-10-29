@@ -21,9 +21,11 @@ export default async function Home() {
 
   return (
     <PageWrapper>
-      <main className="min-h-screen">
-        <div className="flex flex-col gap-20">
-          <MostViewedSection {...allResources} />
+      <main className="min-h-screen w-full max-w-7xl mx-auto">
+        <div className="px-6 sm:px-8 lg:px-12">
+          <div className="flex flex-col gap-20">
+            <MostViewedSection {...allResources} />
+          </div>
         </div>
       </main>
     </PageWrapper>

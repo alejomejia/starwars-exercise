@@ -2,10 +2,9 @@
 
 import { Button } from '../Button/Button'
 import { IconReload } from '../Icons/IconReload'
-import { useRouter } from 'next/navigation'
 
 export function ErrorSection() {
-  const { refresh } = useRouter()
+  const handleRefresh = () => location.reload()
 
   return (
     <main className="min-h-screen pt-24">
@@ -13,7 +12,7 @@ export function ErrorSection() {
         <div>
           <h1 className="text-6xl font-semibold mb-8">Something went wrong!</h1>
           <div className="w-44 mx-auto">
-            <Button onClick={refresh} endIcon={<IconReload />}>
+            <Button onClick={handleRefresh} endIcon={<IconReload />}>
               Try Again
             </Button>
           </div>

@@ -1,6 +1,6 @@
 <img width="1563" alt="image" src="https://github.com/alejomejia/starwars-exercise/assets/10382723/d4f09682-3f24-4746-b992-e39268f31cdb">
 
-🌍 [Live site](https://starwars-exercise-dxcq9nh2y-alejomejia.vercel.app/)
+🌍 [Live site](https://starwars-exercise-blond.vercel.app/)
 
 StarWars exercise with [Swapi API](https://swapi.dev/) using NextJS 13 with App Router, Typescript and TailwindCSS.
 

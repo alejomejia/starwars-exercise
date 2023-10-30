@@ -1,11 +1,10 @@
 'use client'
 
 import { ErrorSection } from '@/components/ErrorSection/ErrorSection'
+import { useRouter } from 'next/navigation'
 
-interface Props {
-  reset: () => void
-}
+export default function Error() {
+  const { refresh } = useRouter()
 
-export default function Error({ reset }: Props) {
-  return <ErrorSection onReset={reset} />
+  return <ErrorSection onClick={refresh} />
 }

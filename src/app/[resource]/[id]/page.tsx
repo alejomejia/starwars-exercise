@@ -22,7 +22,7 @@ export default async function Person({ params: { resource, id } }: Props) {
       <main>
         <section className="w-full max-w-7xl mx-auto">
           <div className="px-8 lg:px-12">
-            <div className="mb-8 w-48">
+            <div className="mb-8 w-52">
               <GoBackLink href={ROUTES[resource]}>Back to {resource}</GoBackLink>
             </div>
             <PageDetails resourceData={parsedResource} />
